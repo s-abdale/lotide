@@ -24,11 +24,21 @@ let eqObjects = function(object1, object2) {
 
 const assertObjectsEqual = function(actual, expected) {
   const inspect = require('util').inspect;
-  // Implement eqObjects
-  if (eqObjects(actual, expected)) {
-    console.log(`✅ Pass! ${inspect(actual)} === ${inspect(expected)}`);
+  // Check if variable is an object
+  if (typeof(actual) === 'object') {
+    // Implement eqObjects
+    if (eqObjects(actual, expected)) {
+      console.log(`✅ Pass! ${inspect(actual)} === ${inspect(expected)}`);
+    } else {
+      console.log(`🚨 Fail. ${inspect(actual)} !== ${inspect(expected)}`);
+    }
   } else {
-    console.log(`🚨 Fail. ${inspect(actual)} !== ${inspect(expected)}`);
+    // If variable is not an object (e.g.: boolean)
+    if (actual === expected) {
+      console.log(`✅ Pass! ${actual} === ${expected}`);
+    } else {
+      console.log(`🚨 Fail. ${actual} !== ${expected}`);
+    }
   }
 };
 
@@ -39,6 +49,9 @@ const assertObjectsEqual = function(actual, expected) {
 const ab = { a: "1", b: "2" };
 const ba = { b: "2", a: "1" };
 const abc = { a: "1", b: "2", c: "3" };
+const eqEval = eqObjects(ab, ba);
 
 assertObjectsEqual(ab, ba); // returns: Pass
 assertObjectsEqual(ab, abc); // returns: Fail
+assertObjectsEqual(eqEval, true); // returns Pass
+assertObjectsEqual(eqEval, false); // returns Fail
