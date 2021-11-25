@@ -66,3 +66,4 @@ assertArraysEqual(result1["e"], [1]); // => should return True
 assertArraysEqual(result1["l"], [2, 3]); // => should return True
 assertArraysEqual(result1["o"], [4]); // => should return True
 assertArraysEqual(result1["o"], [2]); // => should return False
+assertArraysEqual(letterPositions("hello").e, [1]); // => should return True
