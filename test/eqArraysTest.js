@@ -1,12 +1,16 @@
+const assert = require('chai').assert;
 const eqArrays = require('../eqArrays.js');
 const assertEqual = require('../assertEqual');
 
-// Testing:
-eqArrays([1, 2, 3], [1, 2, 3]); // => true
-eqArrays([1, 2, 3], [3, 2, 1]); // => false
 
-eqArrays(["1", "2", "3"], ["1", "2", "3"]); // => true
-eqArrays(["1", "2", "3"], ["1", "2", 3]); // => false
-
-// Testing with assertEqual:
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+describe("#eqArrays", () => {
+  it("returns true for equal arrays", () => {
+    assert.isTrue(eqArrays([1, 2, 3], [1, 2, 3]));
+  });
+  it("returns false for unequal arrays", () => {
+    assert.notStrictEqual(["1", "2", "3"], ["1", "2", 3]); 
+  });
+  it("returns true when eqArrays comparison is tested by assertEqual", () => {
+    assert.isTrue(assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true)); 
+  });
+});

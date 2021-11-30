@@ -15,7 +15,8 @@ let middle = function(array) {
     let median = Math.floor(array.length / 2); // calculates median index
     output.push(array[median]); // pushes value at index
   }
-  console.log(output);
+  // console.log(output);
+  return output;
 };
 
 module.exports = middle;
